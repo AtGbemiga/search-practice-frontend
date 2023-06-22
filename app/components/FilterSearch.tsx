@@ -2,10 +2,9 @@
 import SearchByFilter from "@/lib/SearchByFilter";
 import { useState } from "react";
 import { BooleanSearch } from "./BooleanSearch";
-import { FilterBtn } from "./FilterBtn";
 
 export const FilterSearch: React.FC = () => {
-  const [boolResult, setBoolResult] = useState<boolean>(false);
+  const [boolResult, setBoolResult] = useState<boolean | null>(false);
   const [dataResults, setDataResults] = useState<AllData[] | null>(null);
 
   async function handleBool() {
@@ -19,13 +18,14 @@ export const FilterSearch: React.FC = () => {
     }
   }
 
-  function handleRadioChange(value: boolean) {
-    setBoolResult(value);
-  }
   return (
     <div>
-      <BooleanSearch />
-      <FilterBtn handleBool={handleBool} />
+      <BooleanSearch
+        boolResult={boolResult === null ? false : (boolResult as boolean)}
+        setBoolResult={setBoolResult}
+        dataResults={dataResults}
+      />
+      <button onClick={handleBool}>Filter</button>
       {dataResults && (
         <ul>
           {dataResults.map((data) => (

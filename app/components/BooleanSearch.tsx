@@ -1,22 +1,13 @@
-"use client";
-import SearchByFilter from "@/lib/SearchByFilter";
-import { useState } from "react";
+export interface BooleanSearchProps {
+  boolResult: boolean;
+  setBoolResult: React.Dispatch<React.SetStateAction<boolean | null>>;
+  dataResults: AllData[] | null;
+}
 
-export const BooleanSearch: React.FC = () => {
-  const [boolResult, setBoolResult] = useState<boolean>(false);
-  const [dataResults, setDataResults] = useState<AllData[] | null>(null);
-
-  async function handleBool() {
-    try {
-      const results = await SearchByFilter(
-        boolResult === null ? undefined : boolResult
-      );
-      setDataResults(results);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+export const BooleanSearch: React.FC<BooleanSearchProps> = ({
+  boolResult,
+  setBoolResult,
+}) => {
   function handleRadioChange(value: boolean) {
     setBoolResult(value);
   }
@@ -38,14 +29,6 @@ export const BooleanSearch: React.FC = () => {
         />
         False
       </label>
-      <button onClick={handleBool}>Boolean</button>
-      {dataResults && (
-        <ul>
-          {dataResults.map((data) => (
-            <li key={data._id}>{data.title}</li>
-          ))}
-        </ul>
-      )}
     </div>
   );
 };

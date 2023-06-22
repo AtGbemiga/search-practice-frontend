@@ -1,8 +1,6 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import { DisplayFullData } from "./components/DisplayFullData";
 import NameSearch from "./components/NameSearch";
-import { BooleanSearch } from "./components/BooleanSearch";
 import { FilterSearch } from "./components/FilterSearch";
 
 export default function Home() {
@@ -12,8 +10,7 @@ export default function Home() {
       <hr />
       <NameSearch />
       <hr />
-      {/* <FilterSearch /> */}
-      <BooleanSearch />
+      <FilterSearch />
     </main>
   );
 }
