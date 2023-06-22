@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import getAllData from "@/lib/getAllData";
+import React, { useState } from "react";
+import SearchByTitle from "@/lib/SearchByTitle";
 
 const NameSearch: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -8,7 +8,7 @@ const NameSearch: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const results = await getAllData(searchTerm);
+      const results = await SearchByTitle(searchTerm);
       setSearchResults(results);
     } catch (error) {
       console.error("Error searching:", error);

@@ -1,10 +1,8 @@
 "use client";
 import SearchByFilter from "@/lib/SearchByFilter";
 import { useState } from "react";
-import { BooleanSearch } from "./BooleanSearch";
-import { FilterBtn } from "./FilterBtn";
 
-export const FilterSearch: React.FC = () => {
+export const BooleanSearch: React.FC = () => {
   const [boolResult, setBoolResult] = useState<boolean>(false);
   const [dataResults, setDataResults] = useState<AllData[] | null>(null);
 
@@ -24,8 +22,23 @@ export const FilterSearch: React.FC = () => {
   }
   return (
     <div>
-      <BooleanSearch />
-      <FilterBtn handleBool={handleBool} />
+      <label>
+        <input
+          type="radio"
+          checked={boolResult === true}
+          onChange={() => handleRadioChange(true)}
+        />
+        True
+      </label>
+      <label>
+        <input
+          type="radio"
+          checked={boolResult === false}
+          onChange={() => handleRadioChange(false)}
+        />
+        False
+      </label>
+      <button onClick={handleBool}>Boolean</button>
       {dataResults && (
         <ul>
           {dataResults.map((data) => (

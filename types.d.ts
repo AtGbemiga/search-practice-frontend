@@ -1,4 +1,4 @@
-type AllData = {
+interface AllData {
   _id: string;
   title: string;
   cost: number;
@@ -6,4 +6,4 @@ type AllData = {
   grade: number;
   madeAt: string;
   seller: string;
-};
+}

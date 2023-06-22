@@ -13,6 +13,7 @@ export const DisplayFullData = async () => {
             <h5>Cost: {item.cost}</h5>
             <h5>Grade: {item.grade}</h5>
             <h5>Made at: {item.madeAt}</h5>
+            <h5>Promote:{item.promote}</h5>
           </div>
         );
       })}
