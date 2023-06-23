@@ -1,13 +1,13 @@
 export interface BooleanSearchProps {
   boolResult: boolean;
-  setBoolResult: React.Dispatch<React.SetStateAction<boolean | null>>;
+  setBoolResult: React.Dispatch<React.SetStateAction<boolean>>;
   dataResults: AllData[] | null;
 }
 
-export const BooleanSearch: React.FC<BooleanSearchProps> = ({
+export const BooleanSearch = ({
   boolResult,
   setBoolResult,
-}) => {
+}: BooleanSearchProps) => {
   function handleRadioChange(value: boolean) {
     setBoolResult(value);
   }
@@ -15,7 +15,7 @@ export const BooleanSearch: React.FC<BooleanSearchProps> = ({
     <div>
       <label>
         <input
-          type="radio"
+          type="checkbox"
           checked={boolResult === true}
           onChange={() => handleRadioChange(true)}
         />
@@ -23,7 +23,7 @@ export const BooleanSearch: React.FC<BooleanSearchProps> = ({
       </label>
       <label>
         <input
-          type="radio"
+          type="checkbox"
           checked={boolResult === false}
           onChange={() => handleRadioChange(false)}
         />
