@@ -15,6 +15,7 @@ export const BooleanSearch = ({
     <div>
       <label>
         <input
+          name="true"
           type="checkbox"
           checked={boolResult === true}
           onChange={() => handleRadioChange(true)}
@@ -23,6 +24,7 @@ export const BooleanSearch = ({
       </label>
       <label>
         <input
+          name="false"
           type="checkbox"
           checked={boolResult === false}
           onChange={() => handleRadioChange(false)}
