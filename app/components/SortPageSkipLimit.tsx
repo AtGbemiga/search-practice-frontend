@@ -6,18 +6,19 @@ import { Sort } from "./Sort";
 import { Limit } from "./Limit";
 
 export const SortPageSkipLimit = () => {
-  const [sortName, setSortName] = useState<string>("");
-  const [limitNo, setLimitNo] = useState<number>(0);
+  const [sortName, setSortName] = useState("");
+  const [limitNo, setLimitNo] = useState<number | null>(null);
   const [finalResults, setFinalResults] = useState<AllData[] | null>(null);
 
   async function handleSubmit() {
     try {
-      const results = await sortPageSkipLimit(sortName, limitNo);
+      const results = await sortPageSkipLimit(sortName, limitNo ?? undefined);
       setFinalResults(results);
     } catch (error) {
       console.log(error);
     }
   }
+
   return (
     <div>
       <Sort
